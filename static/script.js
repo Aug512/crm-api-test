@@ -1,6 +1,6 @@
 'use strict'
 
-const USERS_COUNTER = 4
+const USERS_COUNTER = 50
 const MIN_BIRTH_DATE = Date.parse(new Date(0)); //01.01.1970
 const MAX_BIRTH_DATE = Date.parse(new Date(2000, 12, 31)); //YYYY, MM, DD
 const libs = [    // Заполнил по рандомным топам из интернета для некоторого разнообразия
@@ -140,12 +140,12 @@ class User {
 const getIndex = (n) => {
   const ids = [1, 2]
 
-  let a = 1;
-  let b = 2;
+  let a = 1
+  let b = 2
   for (let i = 3; i <= n; i++) {
-    let c = a + b;
-    a = b;
-    b = c;
+    let c = a + b
+    a = b
+    b = c
     ids.push(c)
   }
   return ids
@@ -173,7 +173,7 @@ function fetchUntil(maxValue) {
     fetch('/clients/create', {
       method: 'POST',
       headers: {
-        ['Content-Type']: 'application/json;charset=utf-8',
+        ['Content-Type']: 'application/json;charset=utf-8'
       },
       body: JSON.stringify({data: formatUserData(usersArr[counter])})
     })
@@ -192,13 +192,5 @@ const getData = (url) => {
     .catch(err => console.error(err))
 }
 
-const setData = (url, userData) => {
-  fetch(url, {method: 'POST', ...userData})
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err))
-}
-
 getButton.addEventListener('click', () => getData('/clients/get'))
 setButton.addEventListener('click', () => fetchUntil(USERS_COUNTER))
-

@@ -21,7 +21,7 @@ app.post('/clients/create', async (req, res) => {
       },
       body: req.body.data
     }, function (body) {
-      res.status(201).send({message: 'User war successfully created'})
+      res.status(201).send({message: 'User was successfully created'})
     });
   } catch (err) {
     res.status(500).json({message: 'Something goes wrong...'})
